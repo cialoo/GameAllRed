@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+    <head>
+        <title>ALL RED</title>
+        <style>
+            button {
+                background: black;
+              border: none;
+              padding: 50px 50px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 10px;
+              margin: 5px 5px;
+              cursor: pointer;
+            }
+            .example-print {
+                display: none;
+            }
+            @media print {
+            .example-screen {
+                display: none;
+                }
+                .example-print {
+                display: block;
+                }
+            }
+
+        </style>
+    </head>
+    <body style="text-align: center;">
+
+        <h1>All squares must be RED</h1>
+
+        <input type="button" id="startTimer" value="Start" onclick="start();">
+        <input type="button" id="stopTimer" value="Stop"  onclick="stop();">
+        <div>Miliseconds: <span id="time">0</span></div>
+        
+        <button id="button1" onclick="change(1);" ></button>
+        <button id="button2" onclick="change(2);"></button>
+        <button id="button3" onclick="change(3);"></button>
+        <button id="button4" onclick="change(4);"></button>
+        <br>
+        <button id="button5" onclick="change(5);"></button>
+        <button id="button6" onclick="change(6);"></button>
+        <button id="button7" onclick="change(7);"></button>
+        <button id="button8" onclick="change(8);"></button>
+        <br>
+        <button id="button9" onclick="change(9);"></button>
+        <button id="button10" onclick="change(10);"></button>
+        <button id="button11" onclick="change(11);"></button>
+        <button id="button12" onclick="change(12);"></button>
+        <br>
+        <button id="button13" onclick="change(13);"></button>
+        <button id="button14" onclick="change(14);"></button>
+        <button id="button15" onclick="change(15);"></button>
+        <button id="button16" onclick="change(16);"></button>
+        <br>
+        <br>
+
+        <input type="button" value="Click here to print it and share score with your frieds ;)" onClick="window.print();">
+        <input type="button" value="Try again" onClick="window.location.reload();">
+
+        <div class="example-screen">You only see me in the browser</div>
+
+<div class="example-print">You only see me in the print</div>
+        <script>
+            function change(number) {
+                document.getElementById("button"+number).style.background = "red";
+                document.getElementById("button"+(number - 1)).style.background = "blue";
+            }
+
+            var timeElapsed = 0;
+            var timerID = -1;
+            function tick() {
+                timeElapsed++
+                document.getElementById("time").innerHTML = timeElapsed;
+            }
+
+            function start() {
+                if(timerID == -1){
+                    timerID = setInterval(tick, 1);
+                }
+            }
+
+            function stop() {
+                if(timerID != -1){
+                    clearInterval(timerID)
+                    timerID = -1
+                }
+            }
+        </script>
+
+    </body>
+</html>
